@@ -1,0 +1,11 @@
+package-as: DynamicFlightHUD
+enable-nolib-creation: no
+
+ignore: # Files and directories beginning with a dot (such as .git) are automatically ignored, as is the pgkmeta file itself.
+    - media
+    - Copy-Addon.ps1
+    - README.md
+
+manual-changelog: updates.txt
+
+license-output: LICENSE.txt
