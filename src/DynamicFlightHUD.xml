@@ -1,6 +1,6 @@
 <Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
     <Script file="DynamicFlightHUD.lua" />
-    <Frame name="DynamicFlightHUD" virtual="true">
+    <Frame name="DynamicFlightHUD">
         <Scripts>
             <OnLoad>
 				InitializeAddon(self);
@@ -8,23 +8,6 @@
             <OnEvent>
                 OnEventReceived(self, event, ...);
             </OnEvent>
-        </Scripts>
-        <Size>
-            <AbsDimension x="256" y="256" />
-        </Size>
-        <Anchors>
-            <Anchor point="CENTER" relativeTo="UIParent" relativePoint="CENTER" />
-        </Anchors>
-        <Layers>
-            <!-- <Layer level="BACKGROUND">
-                <Texture name="Background" file="Interface\AddOns\DynamicFlightHUD\Textures\Background" setAllPoints="true" />
-            </Layer> -->
-            <Layer level="ARTWORK">
-                <Texture name="Border" file="Interface\AddOns\DynamicFlightHUD\Textures\cogwheel" setAllPoints="true" />
-            </Layer>
-            <Layer level="OVERLAY">
-                <Texture name="Arrow" file="Interface\AddOns\DynamicFlightHUD\Textures\search" setAllPoints="true" />
-            </Layer>
-        </Layers>
+        </Scripts>        
     </Frame>
 </Ui>

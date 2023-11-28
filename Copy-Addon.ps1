@@ -28,5 +28,6 @@ New-Item -Path $backupAddonPath -Name $dateTimeNow -ItemType "directory"
 # Back up last session
 Copy-Item -Path $allWowAddonFiles -Destination $backupAddonPathDateTime -Recurse
 
-# copy over only files within the "src" folder and nothing else
 Copy-Item -Path "src\*" -Destination $addonPath -Recurse -Force
+
+Write-Host $addonPath -ForegroundColor Blue
