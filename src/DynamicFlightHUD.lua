@@ -1,18 +1,20 @@
 local isDevelopment = true
 local maxBuffCount = 20
 local dynamicFlightMountDb = {}
-local isDbLoaded = false
-local isMounted = false
+
+-- Init
 
 function InitializeAddon(self)
     self:RegisterEvent("ADDON_LOADED")
 end
 
+-- Events
+
 function OnEventReceived(self, event, ...)
     if ( event == "ADDON_LOADED" ) then
         local arg1 = ...
         if ( arg1 == "DynamicFlightHUD" ) then
-            Log(arg1)
+            Log("Dynamic Flight HUD loaded.")
             self:UnregisterEvent("ADDON_LOADED")
             self:RegisterEvent("PLAYER_MOUNT_DISPLAY_CHANGED")
 
@@ -28,8 +30,6 @@ end
 
 function OnMountEventReceived(self, event, ...)
     if ( event == "PLAYER_MOUNT_DISPLAY_CHANGED" ) then
-        print("PLAYER_MOUNT_DISPLAY_CHANGED")
-        isMounted = true
         IsDragonridingMount()
     end
 end
@@ -62,17 +62,15 @@ function GetDynamicFlightMounts()
     Log("======== DYNAMIC MOUNT COUNT ============")
     Log(count)
 
-    isDbLoaded = true
     Log("Dynamic flight mount database loaded.")
 end
 
 function IsDragonridingMount()
     local currentMount = GetCurrentMountedMount()
-    Log(currentMount)
     if currentMount then
         Log("Dynamic flight mount: " .. currentMount)
     else
-        Log("Not a dynamic flight mount.")
+        Log("Non-Dynamic flight mount")
     end
 end
 
@@ -87,14 +85,6 @@ function GetCurrentMountedMount()
         end
     end
 
-    -- print the buffs
-    if isDevelopment then
-        Log("======== PLAYER BUFFS ============")
-        for k, v in pairs(playerBuffs) do
-            print(k, v)
-        end
-    end
-
     -- Check if any of the buffs match our mount database
     for k, v in pairs(playerBuffs) do
         if dynamicFlightMountDb[v] then
@@ -102,7 +92,7 @@ function GetCurrentMountedMount()
         end
     end
 
-    return nil -- No mount found
+    return nil
 end
 
 function Log(var)
