@@ -7,6 +7,7 @@
             </OnLoad>
             <OnEvent>
                 OnEventReceived(self, event, ...);
+                OnMountEventReceived(self, event, ...);
             </OnEvent>
         </Scripts>        
     </Frame>
