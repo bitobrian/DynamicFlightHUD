@@ -38,13 +38,9 @@ end
 
 function GetDynamicFlightMounts()
     local mountIds = C_MountJournal.GetMountIDs()
-    -- Log(mountIds)
 
-    -- log the count of mountIds
-    if isDevelopment then
-        Log("======== MOUNT IDS ============")
-        Log(#mountIds)
-    end
+    Log("======== MOUNT COUNT ============")
+    Log(#mountIds)
 
     -- check if mountIds is empty or nil
     if not mountIds then
@@ -60,27 +56,23 @@ function GetDynamicFlightMounts()
             count = count + 1
             local mountName = C_MountJournal.GetMountInfoByID(mountIds[i])
             dynamicFlightMountDb[mountName] = true
-
-            if isDevelopment then
-                Log("======== DRAGONRIDING MOUNTS ============")
-                Log(mountName)
-            end
         end
     end
 
-    Log("======== DRAGONRIDING MOUNTS ============")
+    Log("======== DYNAMIC MOUNT COUNT ============")
     Log(count)
 
     isDbLoaded = true
+    Log("Dynamic flight mount database loaded.")
 end
 
 function IsDragonridingMount()
     local currentMount = GetCurrentMountedMount()
     Log(currentMount)
     if currentMount then
-        print("Currently mounted on:", currentMount)
+        Log("Dynamic flight mount: " .. currentMount)
     else
-        print("Not a dynamic flying mount.")
+        Log("Not a dynamic flight mount.")
     end
 end
 
